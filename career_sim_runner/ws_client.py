@@ -16,7 +16,7 @@ from career_sim_runner.skill_contract import SubmissionError
 from career_sim_runner.transcript import EventCallback, StreamCollector, _walk
 
 SESSION_ID_RE = re.compile(r"SESSION_ID=([0-9a-fA-F]{8,})")
-MAX_CONTINUATIONS = 6
+MAX_CONTINUATIONS = 20
 _CAREER_MCP_PREFIX = "mcp_career-emulator_"
 _GAME_OVER_PREFIX = "GAME OVER:"
 
@@ -152,7 +152,12 @@ def _build_envelope(prompt: str, session_id: str, mode: str) -> dict[str, Any]:
         "session_id": session_id,
         "channel": "web",
         "method": "chat.send",
-        "params": {"content": prompt, "query": prompt, "mode": mode},
+        "params": {
+            "content": prompt,
+            "query": prompt,
+            "mode": mode,
+            "work_mode": "work",  # Omitting this may activate legacy code in JiuwenSwarm in rare cases
+        },
         "is_stream": True,
     }
 

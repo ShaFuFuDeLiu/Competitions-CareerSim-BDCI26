@@ -16,8 +16,6 @@ DRIVE_SESSION_PREFIX: str = "career-sim-runner"
 DEFAULT_TIMEOUT_S: float = 7200.0
 
 JWS_DATA_DIR_ENV: str = "JIUWENSWARM_DATA_DIR"
-RUNNER_ENV_TEMPLATE: str = ".env.example"
-RUNNER_CONFIG_TEMPLATE: str = "jiuwenswarm.config.yaml"
 ACTIVE_INSTALL_FILE: str = "active_install.json"
 LAST_DRIVE_SESSION_FILE: str = "last_drive_session.txt"
 LAST_OUTPUT_DIR_FILE: str = "last_output_dir.txt"
@@ -26,7 +24,7 @@ CAREER_EMULATOR_ACTIVE_LONG_CHAIN_LIMIT: int = 1
 CAREER_EMULATOR_MONTHLY_EVENT_LIMIT: int = 3
 CAREER_EMULATOR_MAX_NOTE_LENGTH: int = 1000
 SUBMISSION_MODE_SKILL_BUNDLE: str = "skill_bundle"
-SUPPORTED_RUN_MODES: frozenset[str] = frozenset({"agent.fast", "agent.plan", "team"})
+SUPPORTED_RUN_MODES: frozenset[str] = frozenset({"agent", "team"})
 
 MEMORY_MD_CONTENT = """
 ### 长期记忆
