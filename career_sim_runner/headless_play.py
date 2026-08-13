@@ -147,6 +147,7 @@ async def play_headless(
         output_dir=output_dir,
         token_usage=drive_result.token_usage,
         play_exit_code=drive_result.exit_code,
+        termination_reason=drive_result.termination_reason,
         transcript_path=drive_result.transcript_path,
         events_path=drive_result.events_path,
         drive_session_id=drive_session_id,

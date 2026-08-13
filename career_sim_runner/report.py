@@ -2,6 +2,9 @@
 
 import json
 
+from rich.console import Console
+from rich.panel import Panel
+
 from career_sim_runner.models import ScoreReport, ValidationReport
 
 
@@ -33,6 +36,7 @@ def format_score_report(report: ScoreReport) -> str:
         f"drive_session_id: {report.drive_session_id}",
         f"session_id: {report.session_id}",
         f"play_exit_code: {report.play_exit_code}",
+        f"termination_reason: {report.termination_reason}",
         f"output_dir: {report.output_dir}",
         f"transcript_log: {report.transcript_log}",
         f"events_log: {report.events_log}",
@@ -40,3 +44,24 @@ def format_score_report(report: ScoreReport) -> str:
         f"ending_score: {score_report}",
     ]
     return "\n".join(lines)
+
+
+def print_termination_error(report: ScoreReport, console: Console | None = None) -> None:
+    """Print a rich diagnostic when a play run stops before game completion.
+
+    :param report: Completed play report containing the termination reason.
+    :param console: Rich console to print to; creates a stderr console if omitted.
+    """
+    if report.termination_reason != "max_continuations":
+        return
+    output = console or Console(stderr=True)
+    output.print(
+        Panel(
+            "The agent completed the maximum number of continuation cycles, but the game did not reach a "
+            "terminal state.\n\n"
+            "Check the transcript for repeated tool-call failures. Increase MAX_CONTINUATIONS only if the run "
+            "is making valid progress.",
+            title="Continuation limit exhausted",
+            border_style="bold red",
+        )
+    )

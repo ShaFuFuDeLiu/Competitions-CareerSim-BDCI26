@@ -26,6 +26,7 @@ class DriveResult:
     """Outcome of one WebSocket play session."""
 
     exit_code: int
+    termination_reason: str | None
     session_id: str | None
     token_usage: TokenUsage
     transcript: str
@@ -234,6 +235,7 @@ async def drive(
     collector = StreamCollector(log_dir=log_dir, on_event=on_event)
     game = _GameState()
     exit_code = 0
+    termination_reason: str | None = None
     skip_next_e2a_complete = False
 
     async with websockets.connect(ws_url, max_size=None, open_timeout=10) as ws:
@@ -279,6 +281,7 @@ async def drive(
                 if _has_ended(game):
                     break
                 if continuations >= MAX_CONTINUATIONS:
+                    termination_reason = "max_continuations"
                     break
                 continuations += 1
                 cont_prompt = build_continue_prompt(game)
@@ -302,6 +305,7 @@ async def drive(
     assert collector.transcript_path is not None
     return DriveResult(
         exit_code=exit_code,
+        termination_reason=termination_reason,
         session_id=game_session_id,
         token_usage=collector.totals,
         transcript=collector.transcript,

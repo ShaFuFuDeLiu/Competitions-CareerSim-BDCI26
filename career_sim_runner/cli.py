@@ -24,7 +24,7 @@ from career_sim_runner.paths import (
 )
 from career_sim_runner.replay import build_replay_report, print_replay_rich, write_replay_report
 from career_sim_runner.replay.live import LiveReplayObserver
-from career_sim_runner.report import format_score_report, format_validation_report
+from career_sim_runner.report import format_score_report, format_validation_report, print_termination_error
 from career_sim_runner.score import build_score_report, write_score_report
 from career_sim_runner.setup import (
     ensure_instance_configured,
@@ -185,6 +185,7 @@ def main() -> int:
         )
         if observer is not None:
             observer.finish()
+        print_termination_error(play_report)
         print(format_score_report(play_report))
         print(f"report_path: {report_path}")
         return 0 if play_report.play_exit_code == 0 else 1
@@ -209,6 +210,7 @@ def main() -> int:
                 output_dir=output_dir,
                 token_usage=token_usage,
                 play_exit_code=0,
+                termination_reason=None,
                 transcript_path=transcript_path,
                 events_path=events_path,
                 drive_session_id=drive_session_id,

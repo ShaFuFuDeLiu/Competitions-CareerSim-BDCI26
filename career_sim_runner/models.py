@@ -80,6 +80,7 @@ class ScoreReport:
     drive_session_id: str
     session_id: str
     play_exit_code: int
+    termination_reason: str | None
     token_usage: TokenUsage
     ending_score: dict[str, Any]
     output_dir: str
