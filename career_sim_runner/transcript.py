@@ -26,8 +26,14 @@ def _walk(obj: Any) -> list[dict[str, Any]]:
 
 
 def _extract_text(frame: dict[str, Any]) -> str:
-    """Extract text-like payload fragments from one frame."""
+    """Extract visible text-like payload fragments from one frame.
+
+    E2A ``e2a.chunk`` frames with ``delta_kind=reasoning`` are skipped so
+    reasoning content is not written into the transcript.
+    """
     for node in _walk(frame):
+        if node.get("delta_kind") == "reasoning":
+            continue
         for key in ("text", "content", "delta"):
             value = node.get(key)
             if isinstance(value, str) and value.strip():
