@@ -223,3 +223,6 @@ __marimo__/
 # Output & submission for CareerSim-BDCI26
 .career_sim_runner/
 solution/
+
+描述.md
+references/
