@@ -576,11 +576,11 @@ bdci = [
 
 [[package]]
 name = "career-emulator-bdci26"
-version = "0.0.0.dev8"
+version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/39/31/0d553502612e805b2d9b16319724d2e5a6aee970d84bc93478c26b748411/career_emulator_bdci26-0.0.0.dev8.tar.gz", hash = "sha256:185837ae053ad970bc42e1c21a511a2363ca443f37370b02ed09e535559a7f09", size = 23345, upload-time = "2026-07-06T15:48:30.057Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7e/1c/a65bec6b572ea7c0dfb9794f3772edb902f8fb99f31c103123aeff3007b2/career_emulator_bdci26-1.0.0.tar.gz", hash = "sha256:7ef02046dfbb89687ac264594470694563b6b92628ba9154135c9c0e6d4ed567", size = 258397, upload-time = "2026-08-14T15:02:08.623Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ca/7b/fa0daf92922aff0cfb77601e2258911e2bbf38874385ee7b23cdad310b15/career_emulator_bdci26-0.0.0.dev8-py3-none-any.whl", hash = "sha256:49ccfba12d7f1c51f7cff99608406561b5347a38fc3477521a69efcb194edbae", size = 26167, upload-time = "2026-07-06T15:48:28.955Z" },
+    { url = "https://files.pythonhosted.org/packages/3a/06/44e6c91640a8fe17f51472264c0f3141ebe29a516387dbc982b28c10832a/career_emulator_bdci26-1.0.0-py3-none-any.whl", hash = "sha256:5aae65a5d7b3aaf21a3a8af0b5c97240f9ca23f7d844160582ec41174b1c9954", size = 299803, upload-time = "2026-08-14T15:02:07.057Z" },
 ]
 
 [[package]]
